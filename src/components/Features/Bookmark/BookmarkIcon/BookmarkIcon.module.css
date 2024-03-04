@@ -1,0 +1,17 @@
+.bookmark-btn {
+  cursor: pointer;
+}
+
+.bookmark-btn:hover svg {
+  color: #2671dd;
+}
+
+.bookmark-btn svg {
+  color: #d7dbe0;
+  transition: all 0.2s;
+  font-size: 18px;
+}
+
+.bookmark-btn .filled {
+  color: #2671dd;
+}

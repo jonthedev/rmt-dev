@@ -1,4 +1,4 @@
-import BookmarkIcon from "./BookmarkIcon";
+import BookmarkIcon from "../../Bookmark/BookmarkIcon/BookmarkIcon"
 
 export default function JobListItem() {
   return (
@@ -17,5 +17,5 @@ export default function JobListItem() {
         </div>
       </a>
     </li>
-  );
+  )
 }

@@ -1,0 +1,46 @@
+/* BOOKMARKS BTN */
+.bookmarks-btn {
+  text-transform: lowercase;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.75);
+  margin-left: 13px;
+  padding-left: 13px;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.2s;
+  height: 32px;
+  display: flex;
+  align-items: center;
+}
+
+.bookmarks-btn::before {
+  content: "";
+  height: 15px;
+  width: 2px;
+  display: block;
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.3);
+  left: 0px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.bookmarks-btn--active,
+.bookmarks-btn:hover,
+.bookmarks-btn:focus {
+  color: rgba(255, 255, 255, 1);
+}
+
+.bookmarks-btn--active .bookmarks-btn__icon,
+.bookmarks-btn:hover .bookmarks-btn__icon,
+.bookmarks-btn:focus .bookmarks-btn__icon {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.bookmarks-btn__icon {
+  font-size: 10px;
+  margin-left: 2px;
+  transform: translateY(-1px);
+  color: rgba(255, 255, 255, 0.6);
+  transition: all 0.2s;
+}

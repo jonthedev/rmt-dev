@@ -1,0 +1,34 @@
+.sorting {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.sorting > i {
+  font-size: 11px;
+  color: #4c4f50;
+  margin-right: 5px;
+}
+
+.sorting__button {
+  font-size: 10px;
+  text-transform: uppercase;
+  background-color: #e8edf0;
+  padding: 6px 8px;
+  border-radius: 3px;
+  margin-left: 2px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.sorting__button:hover,
+.sorting__button:focus {
+  background-color: #d0d5d8;
+}
+
+.sorting__button--active,
+.sorting__button--active:hover,
+.sorting__button--active:focus {
+  color: #fff;
+  background-color: #3c4041;
+}

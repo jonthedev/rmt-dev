@@ -1,0 +1,49 @@
+.header {
+  margin-bottom: 13px;
+  position: relative;
+  margin-bottom: 0;
+}
+
+.header__top {
+  display: flex;
+  align-items: center;
+  max-width: 1000px;
+  padding: 0 12px;
+  margin: 0 auto;
+  padding-top: 12px;
+  position: relative;
+  justify-content: center;
+  padding-top: 40px;
+
+  animation: intro 0.3s;
+}
+
+.header__submit-job {
+  margin-right: auto;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.75);
+  text-transform: lowercase;
+  padding-left: 10px;
+  transform: translateY(-2px);
+  cursor: pointer;
+
+  margin-right: 0;
+}
+
+.header__submit-job::before {
+  content: "";
+  display: inline-block;
+  height: 13px;
+  width: 2px;
+  margin-right: 8px;
+  background-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(3px);
+}
+
+@media (max-width: 1009px) {
+  .header__top {
+    padding-left: 0;
+    padding-right: 0;
+    max-width: 800px;
+  }
+}

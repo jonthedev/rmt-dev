@@ -1,6 +1,8 @@
+import styles from "./SportingControls.module.css"
+
 export default function Sorting() {
   return (
-    <section className="sorting">
+    <section className={styles.sorting}>
       <i className="fa-solid fa-arrow-down-short-wide"></i>
 
       <button className="sorting__button sorting__button--relevant">
@@ -11,5 +13,5 @@ export default function Sorting() {
         Recent
       </button>
     </section>
-  );
+  )
 }

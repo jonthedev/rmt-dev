@@ -1,6 +1,8 @@
+import styles from "./SearchForm.module.css"
+
 export default function SearchForm() {
   return (
-    <form action="#" className="search">
+    <form action="#" className={styles.search}>
       <button type="submit">
         <i className="fa-solid fa-magnifying-glass"></i>
       </button>
@@ -12,5 +14,5 @@ export default function SearchForm() {
         placeholder="Find remote developer jobs..."
       />
     </form>
-  );
+  )
 }

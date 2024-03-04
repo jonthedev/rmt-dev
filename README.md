@@ -1,27 +1,45 @@
-# React + TypeScript + Vite
+# RMTDev
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+RMTDev is a web application for searching and bookmarking job listings. It is built using React and Vite, and utilizes various components and contexts for managing state and UI elements.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Search Jobs**: Easily search for job listings using a search form.
+- **Bookmark Jobs**: Bookmark interesting job listings for later reference.
+- **Responsive Design**: Ensures optimal viewing experience across a wide range of devices.
+- **Pagination**: Navigate through multiple pages of job listings effortlessly.
+- **Sorting**: Sort job listings based on different criteria such as date posted or relevance.
 
-## Expanding the ESLint configuration
+## Project Structure
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **index.html**: HTML entry point for the application.
+- **src**: Contains the source code of the application.
+  - **components**: Reusable UI components used throughout the application.
+  - **contexts**: Context providers for managing application state.
+  - **lib**: Utility functions and constants used across the application.
+  - **main.tsx**: Main entry point for the application.
+- **public**: Public assets such as images or SVG icons.
+- **package.json**: Configuration file for npm dependencies.
+- **tsconfig.json**: Configuration file for TypeScript.
+- **vite.config.ts**: Configuration file for Vite.
 
-- Configure the top-level `parserOptions` property like this:
+## Installation
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+To get started with RMTDev, follow these steps:
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+1. Clone the repository
+2. Install dependencies: `npm install`
+3. Start the development server: `npm run dev`
+
+## Technologies Used
+
+- React
+- Vite
+- TypeScript
+- @radix-ui/react-icons
+- @tanstack/react-query
+- react-hot-toast
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).

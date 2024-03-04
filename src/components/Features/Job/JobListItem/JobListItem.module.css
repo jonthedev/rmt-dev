@@ -1,0 +1,122 @@
+/* JOB ITEM */
+.job-item {
+  cursor: pointer;
+  transition: background-color 0.2s;
+  background-color: #fff;
+  /* flex: 1; */
+  height: 76px;
+}
+
+.job-item:not(:nth-child(7)) {
+  border-bottom: 1px solid #ebeff1;
+}
+
+.job-item:hover {
+  background-color: #f4f5f7;
+}
+
+.job-item--active {
+  background-color: #f4f5f7;
+}
+
+.job-item__link {
+  height: 100%;
+  width: 100%;
+  padding: 14px 20px;
+  display: flex;
+}
+
+.job-item__badge {
+  font-size: 13px;
+  height: 46px;
+  width: 38px;
+  /* background-color: #8dd335; */
+  background-color: #dee3e9;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  margin-right: 13px;
+}
+
+/* .job-item:nth-child(4n + 2) .job-item__badge {
+    background-color: #3d87f1;
+  }
+
+  .job-item:nth-child(4n + 3) .job-item__badge {
+    background-color: #d2d631;
+  }
+
+  .job-item:nth-child(4n + 4) .job-item__badge {
+    background-color: #d96a46;
+  } */
+
+.job-item__middle {
+}
+
+.job-item__company {
+  font-size: 13px;
+  /* margin-bottom: 2px; */
+  font-style: italic;
+}
+
+.job-item__extras {
+  display: grid;
+  grid-template-columns: 65px 72px 65px;
+  column-gap: 10px;
+}
+
+.job-item__extra {
+  color: #4d5054;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.job-item__extra-icon {
+  color: #bec5ce;
+  font-size: 10px;
+  margin-right: 1px;
+}
+
+.job-item__right {
+  margin-left: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: translateX(2px) translateY(0px);
+}
+
+.job-item__right svg {
+  font-size: 14px;
+
+  cursor: pointer;
+  color: #d7dbe0;
+  transition: all 0.2s;
+}
+
+.job-item__right svg.filled {
+  color: #2671dd;
+}
+
+.job-item__bookmark-icon--bookmarked {
+  color: #2671dd;
+}
+
+.job-item__time {
+  font-size: 11px;
+  margin-top: 5px;
+  color: #515459;
+}
+
+@media (max-width: 370px) {
+  .job-item {
+    width: 100%;
+  }
+
+  .job-item__badge {
+    display: none;
+  }
+}
