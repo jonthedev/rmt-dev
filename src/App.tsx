@@ -1,9 +1,9 @@
-import Pagination from "./components/PaginationControls/PaginationControls"
+import EmptyJobContent from "./components/Features/Job/EmptyJobConent/EmptyJobContent"
 
 function App() {
   return (
     <>
-      <Pagination />
+      <EmptyJobContent />
     </>
   )
 }
