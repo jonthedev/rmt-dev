@@ -1,9 +1,10 @@
-import { BookmarkFilledIcon } from "@radix-ui/react-icons";
+import { BookmarkFilledIcon } from "@radix-ui/react-icons"
+import styles from "./BookmarkIcon.module.css"
 
 export default function BookmarkIcon() {
   return (
-    <button className="bookmark-btn">
+    <button className={styles["bookmark-btn"]}>
       <BookmarkFilledIcon className="filled" />
     </button>
-  );
+  )
 }
