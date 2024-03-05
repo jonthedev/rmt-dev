@@ -1,7 +1,9 @@
 import BookmarkIcon from "../../Bookmark/BookmarkIcon/BookmarkIcon"
+import EmptyJobContent from "../EmptyJobConent/EmptyJobContent"
 import styles from "./JobItemContent.module.css"
 
 export default function JobItemContent() {
+  return <EmptyJobContent />
   return (
     <section className={styles["job-details"]}>
       <div>
