@@ -1,11 +1,5 @@
-import EmptyJobContent from "./components/Features/Job/EmptyJobConent/EmptyJobContent"
-
 function App() {
-  return (
-    <>
-      <EmptyJobContent />
-    </>
-  )
+  return <></>
 }
 
 export default App

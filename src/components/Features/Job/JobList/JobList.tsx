@@ -1,5 +1,12 @@
+import JobListItem from "../JobListItem/JobListItem"
+import styles from "./JobList.module.css"
+
 export function JobList() {
-  return <ul className="job-list"></ul>;
+  return (
+    <ul className={styles["job-list"]}>
+      <JobListItem />
+    </ul>
+  )
 }
 
-export default JobList;
+export default JobList

@@ -1,19 +1,20 @@
 import BookmarkIcon from "../../Bookmark/BookmarkIcon/BookmarkIcon"
+import styles from "./JobListItem.module.css"
 
 export default function JobListItem() {
   return (
-    <li className="job-item">
-      <a className="job-item__link">
-        <div className="job-item__badge">9T</div>
+    <li className={styles["job-item"]}>
+      <a className={styles["job-item__link"]}>
+        <div className={styles["job-item__badge"]}>9T</div>
 
-        <div className="job-item__middle">
+        <div className={styles["job-item__middle"]}>
           <h3 className="third-heading">Front End React Engineer</h3>
-          <p className="job-item__company">9th Tech</p>
+          <p className={styles["job-item__company"]}>9th Tech</p>
         </div>
 
-        <div className="job-item__right">
+        <div className={styles["job-item__right"]}>
           <BookmarkIcon />
-          <time className="job-item__time">2d</time>
+          <time className={styles["job-item__time"]}>2d</time>
         </div>
       </a>
     </li>
