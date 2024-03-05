@@ -1,11 +1,5 @@
-import Pagination from "./components/PaginationControls/PaginationControls"
-
 function App() {
-  return (
-    <>
-      <Pagination />
-    </>
-  )
+  return <></>
 }
 
 export default App
