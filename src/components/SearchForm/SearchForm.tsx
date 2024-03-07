@@ -1,22 +1,6 @@
-import { useEffect, useState } from "react"
 import styles from "./SearchForm.module.css"
-import { BASE_API_URL } from "../../lib/consts"
 
-export default function SearchForm() {
-  const [searchText, setSearchText] = useState("")
-  const [jobItems, setJobItems] = useState([])
-
-  useEffect(() => {
-    if (!searchText) return
-
-    const fetchData = async () => {
-      const response = await fetch(`${BASE_API_URL}?search=${searchText}`)
-      const data = await response.json()
-      setJobItems(data.jobItems)
-    }
-    fetchData()
-  }, [searchText])
-
+export default function SearchForm({ searchText, setSearchText }) {
   return (
     <form
       action="#"

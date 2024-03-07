@@ -4,7 +4,7 @@ import ResultsCount from "../../ResultsCount/ResultsCount"
 import Sorting from "../../SortingControls/SortingControls"
 import styles from "./Sidebar.module.css"
 
-export default function Sidebar() {
+export default function Sidebar({ jobItems }) {
   return (
     <div className={styles.sidebar}>
       <div className={styles["sidebar__top"]}>
@@ -12,7 +12,7 @@ export default function Sidebar() {
         <Sorting />
       </div>
 
-      <JobList />
+      <JobList jobItems={jobItems} />
       <Pagination />
     </div>
   )
