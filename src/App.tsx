@@ -17,13 +17,16 @@ import Pagination from "./components/PaginationControls/PaginationControls"
 function App() {
   const [searchText, setSearchText] = useState("")
   const [jobItems, setJobItems] = useState([])
+  const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
     if (!searchText) return
 
     const fetchData = async () => {
+      setIsLoading(true)
       const response = await fetch(`${BASE_API_URL}?search=${searchText}`)
       const data = await response.json()
+      setIsLoading(false)
       setJobItems(data.jobItems)
     }
     fetchData()
@@ -45,7 +48,7 @@ function App() {
             <ResultsCount />
             <Sorting />
           </SidebarTop>
-          <JobList jobItems={jobItems} />
+          <JobList jobItems={jobItems} isLoading={isLoading} />
           <Pagination />
         </Sidebar>
         <JobItemContent />
