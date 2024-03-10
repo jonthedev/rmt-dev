@@ -1,9 +1,8 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import Container from "./components/Layout/Container/Container"
 import Footer from "./components/Layout/Footer/Footer"
 import Header, { HeaderTop } from "./components/Layout/Header/Header"
 import { Background } from "./components/SVGR/Background/Background"
-import { BASE_API_URL } from "./lib/consts"
 import BookmarksButton from "./components/Features/Bookmark/BookmarksButton/BookmarksButton"
 import { Logo } from "./components/SVGR/Logo/Logo"
 import SearchForm from "./components/SearchForm/SearchForm"
@@ -13,24 +12,11 @@ import ResultsCount from "./components/ResultsCount/ResultsCount"
 import Sorting from "./components/SortingControls/SortingControls"
 import JobList from "./components/Features/Job/JobList/JobList"
 import Pagination from "./components/PaginationControls/PaginationControls"
+import { useJobItems } from "./lib/hooks"
 
 function App() {
   const [searchText, setSearchText] = useState("")
-  const [jobItems, setJobItems] = useState([])
-  const [isLoading, setIsLoading] = useState(false)
-
-  useEffect(() => {
-    if (!searchText) return
-
-    const fetchData = async () => {
-      setIsLoading(true)
-      const response = await fetch(`${BASE_API_URL}?search=${searchText}`)
-      const data = await response.json()
-      setIsLoading(false)
-      setJobItems(data.jobItems)
-    }
-    fetchData()
-  }, [searchText])
+  const { jobItems, isLoading } = useJobItems(searchText)
 
   return (
     <>
