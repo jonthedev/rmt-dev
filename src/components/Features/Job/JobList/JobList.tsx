@@ -12,7 +12,10 @@ export function JobList({ jobItems, isLoading }: JobListProps) {
   return (
     <ul className={styles["job-list"]}>
       {isLoading && <Spinner />}
-      {!isLoading && jobItems.map(jobItem => <JobListItem jobItem={jobItem} />)}
+      {!isLoading &&
+        jobItems.map(jobItem => (
+          <JobListItem key={jobItem.id} jobItem={jobItem} />
+        ))}
     </ul>
   )
 }
