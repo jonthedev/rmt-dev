@@ -1,6 +1,14 @@
 import styles from "./SearchForm.module.css"
 
-export default function SearchForm({ searchText, setSearchText }) {
+type SearchFormProps = {
+  searchText: string
+  setSearchText: (searchText: string) => void
+}
+
+export default function SearchForm({
+  searchText,
+  setSearchText
+}: SearchFormProps) {
   return (
     <form
       action="#"
