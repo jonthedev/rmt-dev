@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Container from "./components/Layout/Container/Container"
 import Footer from "./components/Layout/Footer/Footer"
 import Header, { HeaderTop } from "./components/Layout/Header/Header"
@@ -17,6 +17,22 @@ import { useJobItems } from "./lib/hooks"
 function App() {
   const [searchText, setSearchText] = useState("")
   const [jobItems, isLoading] = useJobItems(searchText)
+  const [activeId, setActiveId] = useState<number | null>(null)
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      const id = +window.location.hash.slice(1)
+      setActiveId(id)
+    }
+
+    handleHashChange()
+
+    window.addEventListener("hashchange", handleHashChange)
+
+    return () => {
+      window.removeEventListener("hashchange", handleHashChange)
+    }
+  }, [])
 
   return (
     <>
