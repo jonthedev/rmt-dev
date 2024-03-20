@@ -21,7 +21,6 @@ function App() {
   const activeId = useActiveId()
 
   const jobItem = useJobItem(activeId)
-  console.log(jobItem)
 
   return (
     <>
