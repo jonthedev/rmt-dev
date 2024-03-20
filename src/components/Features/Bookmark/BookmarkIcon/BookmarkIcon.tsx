@@ -4,7 +4,7 @@ import styles from "./BookmarkIcon.module.css"
 export default function BookmarkIcon() {
   return (
     <button className={styles["bookmark-btn"]}>
-      <BookmarkFilledIcon className="filled" />
+      <BookmarkFilledIcon className={styles["filled"]} />
     </button>
   )
 }
