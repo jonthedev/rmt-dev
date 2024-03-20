@@ -33,7 +33,7 @@ export function useJobItem(id: number | null) {
       setJobItem(data.jobItem)
     }
 
-    fetchData
+    fetchData()
   }, [id])
 
   return jobItem

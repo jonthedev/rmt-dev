@@ -1,9 +1,19 @@
+import { JobItem } from "../../../../lib/types"
 import BookmarkIcon from "../../Bookmark/BookmarkIcon/BookmarkIcon"
 import EmptyJobContent from "../EmptyJobConent/EmptyJobContent"
 import styles from "./JobItemContent.module.css"
 
-export default function JobItemContent() {
-  return <EmptyJobContent />
+type JobItemContentProps = {
+  jobItem: JobItem | null
+}
+
+export default function JobItemContent({ jobItem }: JobItemContentProps) {
+  if (!jobItem) {
+    return <EmptyJobContent />
+  }
+
+  console.log(jobItem)
+
   return (
     <section className={styles["job-details"]}>
       <div>
