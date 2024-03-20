@@ -1,4 +1,5 @@
 import { useActiveId, useJobItem } from "../../../../lib/hooks"
+import Spinner from "../../../Spinner/Spinner"
 import BookmarkIcon from "../../Bookmark/BookmarkIcon/BookmarkIcon"
 import EmptyJobContent from "../EmptyJobConent/EmptyJobContent"
 import styles from "./JobItemContent.module.css"
@@ -6,7 +7,11 @@ import styles from "./JobItemContent.module.css"
 export default function JobItemContent() {
   const activeId = useActiveId()
 
-  const jobItem = useJobItem(activeId)
+  const [jobItem, isLoading] = useJobItem(activeId)
+
+  if (isLoading) {
+    return <LoadingJobContent />
+  }
 
   if (!jobItem) {
     return <EmptyJobContent />
@@ -103,6 +108,16 @@ export default function JobItemContent() {
             it!
           </p>
         </footer>
+      </div>
+    </section>
+  )
+}
+
+function LoadingJobContent() {
+  return (
+    <section className={styles["job-details"]}>
+      <div>
+        <Spinner />
       </div>
     </section>
   )
