@@ -12,8 +12,6 @@ export default function JobItemContent({ jobItem }: JobItemContentProps) {
     return <EmptyJobContent />
   }
 
-  console.log(jobItem)
-
   return (
     <section className={styles["job-details"]}>
       <div>
