@@ -4,11 +4,16 @@ import styles from "./JobListItem.module.css"
 
 type JobListItemProps = {
   jobItem: JobItem
+  isActive: boolean
 }
 
-export default function JobListItem({ jobItem }: JobListItemProps) {
+export default function JobListItem({ jobItem, isActive }: JobListItemProps) {
   return (
-    <li className={styles["job-item"]}>
+    <li
+      className={`${styles["job-item"]} ${
+        isActive ? styles["job-item--active"] : ""
+      }`}
+    >
       <a className={styles["job-item__link"]} href={`#${jobItem.id}`}>
         <div className={styles["job-item__badge"]}>{jobItem.badgeLetters}</div>
 
