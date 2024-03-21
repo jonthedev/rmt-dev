@@ -65,7 +65,7 @@ export const useJobItems = (searchText: string) => {
   return [jobItemsSliced, isLoading, totalNumberOfResults] as const
 }
 
-export const useDebounce = (value, delay) => {
+export const useDebounce = <T>(value: T, delay = 500): T => {
   const [debouncedValue, setDebouncedValue] = useState(value)
 
   useEffect(() => {
