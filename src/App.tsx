@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Container from "./components/Layout/Container/Container"
 import Footer from "./components/Layout/Footer/Footer"
 import Header, { HeaderTop } from "./components/Layout/Header/Header"
@@ -16,7 +16,16 @@ import { useJobItems } from "./lib/hooks"
 
 function App() {
   const [searchText, setSearchText] = useState("")
-  const [jobItems, isLoading, totalNumberOfResults] = useJobItems(searchText)
+  const [debouncedSearchText, setDebouncedSearchText] = useState("")
+
+  useEffect(() => {
+    const timerId = setTimeout(() => setDebouncedSearchText(searchText), 1000)
+
+    return () => clearTimeout(timerId)
+  }, [searchText])
+
+  const [jobItems, isLoading, totalNumberOfResults] =
+    useJobItems(debouncedSearchText)
 
   return (
     <>
