@@ -10,6 +10,12 @@ type JobItemApiResponse = {
 
 const fetchJobItem = async (id: number): Promise<JobItemApiResponse> => {
   const response = await fetch(`${BASE_API_URL}/${id}`)
+  //4xx or 5xx
+
+  if (!response.ok) {
+    const errorData = await response.json()
+    throw new Error(errorData.description)
+  }
   const data = await response.json()
   return data
 }
@@ -23,7 +29,9 @@ export function useJobItem(id: number | null) {
       refetchOnWindowFocus: false,
       retry: false,
       enabled: Boolean(id),
-      onError: () => {}
+      onError: error => {
+        console.log(error)
+      }
     }
   )
   const isLoading = isInitialLoading
@@ -33,9 +41,6 @@ export function useJobItem(id: number | null) {
 export const useJobItems = (searchText: string) => {
   const [jobItems, setJobItems] = useState<JobItem[]>([])
   const [isLoading, setIsLoading] = useState(false)
-
-  const totalNumberOfResults = jobItems.length
-  const jobItemsSliced = jobItems.slice(0, 7)
 
   useEffect(() => {
     if (!searchText) return
@@ -50,7 +55,7 @@ export const useJobItems = (searchText: string) => {
     fetchData()
   }, [searchText])
 
-  return [jobItemsSliced, isLoading, totalNumberOfResults] as const
+  return [jobItems, isLoading] as const
 }
 
 export function useActiveId() {
