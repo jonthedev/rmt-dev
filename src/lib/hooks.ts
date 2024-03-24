@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { BASE_API_URL } from "./consts"
 import { JobItem, JobItemExpanded } from "./types"
 import { useQuery } from "@tanstack/react-query"
+import toast from "react-hot-toast"
 
 // --------------------------------------------------
 
@@ -70,8 +71,16 @@ export const useJobItems = (searchText: string) => {
       refetchOnWindowFocus: false,
       retry: false,
       enabled: Boolean(searchText),
-      onError: error => {
-        console.log(error)
+      onError: (error: unknown) => {
+        let message
+        if (error instanceof Error) {
+          message = error.message
+        } else if (typeof error === "string") {
+          message = error
+        } else {
+          message = "An error occured"
+        }
+        toast.error(message)
       }
     }
   )

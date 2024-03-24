@@ -13,6 +13,7 @@ import Sorting from "./components/SortingControls/SortingControls"
 import JobList from "./components/Features/Job/JobList/JobList"
 import Pagination from "./components/PaginationControls/PaginationControls"
 import { useDebounce, useJobItems } from "./lib/hooks"
+import { Toaster } from "react-hot-toast"
 
 function App() {
   const [searchText, setSearchText] = useState("")
@@ -45,6 +46,7 @@ function App() {
         <JobItemContent />
       </Container>
       <Footer />
+      <Toaster position="top-right" />
     </>
   )
 }
