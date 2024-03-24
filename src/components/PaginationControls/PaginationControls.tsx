@@ -45,7 +45,10 @@ const PaginationButton = ({
 }: PaginationButtonProps) => {
   return (
     <button
-      onClick={onClick}
+      onClick={e => {
+        onClick()
+        e.currentTarget.blur()
+      }}
       className={`${styles[`pagination__button`]} ${
         styles[`pagination__button--${direction}`]
       }`}
