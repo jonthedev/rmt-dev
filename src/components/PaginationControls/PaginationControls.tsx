@@ -12,20 +12,50 @@ export default function Pagination({
 }: PaginationControlsProps) {
   return (
     <section className={styles.pagination}>
-      <button
-        className={styles["pagination__button"]}
-        onClick={() => onClick("previous")}
-      >
-        <ArrowLeftIcon />
-        Page {currentPage - 1}
-      </button>
-      <button
-        className={styles["pagination__button"]}
+      {currentPage > 1 && (
+        <PaginationButton
+          direction="previous"
+          currentPage={currentPage}
+          onClick={() => onClick("previous")}
+        />
+      )}
+      <PaginationButton
+        direction="next"
+        currentPage={currentPage}
         onClick={() => onClick("next")}
-      >
-        Page {currentPage + 1}
-        <ArrowRightIcon />
-      </button>
+      />
     </section>
+  )
+}
+
+type PaginationButtonProps = {
+  direction: "previous" | "next"
+  currentPage: number
+  onClick: () => void
+}
+
+const PaginationButton = ({
+  direction,
+  currentPage,
+  onClick
+}: PaginationButtonProps) => {
+  return (
+    <button
+      onClick={onClick}
+      className={`${styles[`pagination__button`]} ${
+        styles[`pagination__button--${direction}`]
+      }`}
+    >
+      {direction === "previous" && (
+        <>
+          <ArrowLeftIcon /> Page {currentPage - 1}
+        </>
+      )}
+      {direction === "next" && (
+        <>
+          Page {currentPage + 1} <ArrowRightIcon />
+        </>
+      )}
+    </button>
   )
 }
