@@ -51,6 +51,7 @@ function App() {
   const handleChangeSortBy = (newSortBy: SortBy) => {
     setSortBy(newSortBy)
     setCurrentPage(1)
+    console.log("hello")
   }
 
   return (
@@ -67,7 +68,10 @@ function App() {
         <Sidebar>
           <SidebarTop>
             <ResultsCount totalNumberOfResults={totalNumberOfResults} />
-            <SortingControls sortBy={sortBy} onClick={handleChangeSortBy} />
+            <SortingControls
+              sortBy={sortBy}
+              handleChangeSortBy={handleChangeSortBy}
+            />
           </SidebarTop>
           <JobList jobItems={jobItemsSortedAndSliced} isLoading={isLoading} />
           <Pagination
