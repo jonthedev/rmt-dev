@@ -19,4 +19,6 @@ export type JobItemExpanded = JobItem & {
   companyURL: string
 }
 
+export type PageDirections = "next" | "previous"
+
 export type SortBy = "relevant" | "recent"

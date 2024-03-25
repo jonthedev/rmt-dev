@@ -15,7 +15,7 @@ import Pagination from "./components/PaginationControls/PaginationControls"
 import { useDebounce, useJobItems } from "./lib/hooks"
 import { Toaster } from "react-hot-toast"
 import { RESULTS_PER_PAGE } from "./lib/consts"
-import { type SortBy } from "./lib/types"
+import { type PageDirections, type SortBy } from "./lib/types"
 
 function App() {
   const [searchText, setSearchText] = useState("")
@@ -39,7 +39,7 @@ function App() {
     currentPage * RESULTS_PER_PAGE
   )
 
-  const handleChangePage = (direction: "next" | "previous") => {
+  const handleChangePage = (direction: PageDirections) => {
     if (direction === "next") {
       setCurrentPage(prev => prev + 1)
     } else if (direction === "previous") {
