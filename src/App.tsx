@@ -9,27 +9,35 @@ import SearchForm from "./components/SearchForm/SearchForm"
 import JobItemContent from "./components/Features/Job/JobItemContent/JobItemContent"
 import Sidebar, { SidebarTop } from "./components/Layout/Sidebar/Sidebar"
 import ResultsCount from "./components/ResultsCount/ResultsCount"
-import Sorting from "./components/SortingControls/SortingControls"
+import SortingControls from "./components/SortingControls/SortingControls"
 import JobList from "./components/Features/Job/JobList/JobList"
 import Pagination from "./components/PaginationControls/PaginationControls"
 import { useDebounce, useJobItems } from "./lib/hooks"
 import { Toaster } from "react-hot-toast"
 import { RESULTS_PER_PAGE } from "./lib/consts"
+import { type SortBy } from "./lib/types"
 
 function App() {
   const [searchText, setSearchText] = useState("")
   const debouncedSearchText = useDebounce(searchText, 500)
   const [currentPage, setCurrentPage] = useState(1)
-
   const [jobItems, isLoading] = useJobItems(debouncedSearchText)
-
+  const [sortBy, setSortBy] = useState<SortBy>("relevant")
   const totalNumberOfResults = jobItems?.length || 0
-  const totalNumberOfPages = totalNumberOfResults / 7
-  const jobItemsSliced =
-    jobItems?.slice(
-      currentPage * RESULTS_PER_PAGE - RESULTS_PER_PAGE,
-      currentPage * RESULTS_PER_PAGE
-    ) || []
+  const totalNumberOfPages = totalNumberOfResults / RESULTS_PER_PAGE
+  const jobItemsSorted =
+    jobItems?.sort((a, b) => {
+      if (sortBy === "relevant") {
+        return b.relevanceScore - a.relevanceScore
+      } else {
+        return a.daysAgo - b.daysAgo
+      }
+    }) || []
+
+  const jobItemsSortedAndSliced = jobItemsSorted.slice(
+    currentPage * RESULTS_PER_PAGE - RESULTS_PER_PAGE,
+    currentPage * RESULTS_PER_PAGE
+  )
 
   const handleChangePage = (direction: "next" | "previous") => {
     if (direction === "next") {
@@ -39,6 +47,11 @@ function App() {
         return prev <= 1 ? 0 : prev - 1
       })
     }
+  }
+
+  const handleChangeSortBy = (newSortBy: SortBy) => {
+    setSortBy(newSortBy)
+    setCurrentPage(1)
   }
 
   return (
@@ -55,9 +68,9 @@ function App() {
         <Sidebar>
           <SidebarTop>
             <ResultsCount totalNumberOfResults={totalNumberOfResults} />
-            <Sorting />
+            <SortingControls sortBy={sortBy} onClick={handleChangeSortBy} />
           </SidebarTop>
-          <JobList jobItems={jobItemsSliced} isLoading={isLoading} />
+          <JobList jobItems={jobItemsSortedAndSliced} isLoading={isLoading} />
           <Pagination
             onClick={handleChangePage}
             currentPage={currentPage}
