@@ -4,7 +4,10 @@ import { useLocalStorage } from "../lib/hooks"
 export const BookmarksContext = createContext(null)
 
 export const BookmarksContextProvider = ({ children }) => {
-  const [bookmarkIds, setBookmarkIds] = useLocalStorage("bookmarkedIds", [])
+  const [bookmarkIds, setBookmarkIds] = useLocalStorage<number[]>(
+    "bookmarkedIds",
+    []
+  )
 
   const handleToggleBookmark = (id: number) => {
     if (bookmarkIds.includes(id)) {

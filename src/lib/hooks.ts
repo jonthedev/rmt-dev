@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { SetStateAction, useEffect, useState } from "react"
 import { BASE_API_URL } from "./consts"
 import { JobItem, JobItemExpanded } from "./types"
 import { useQuery } from "@tanstack/react-query"
@@ -110,7 +110,10 @@ export const useDebounce = <T>(value: T, delay = 500): T => {
   return debouncedValue
 }
 
-export const useLocalStorage = (key: string, initialValue) => {
+export function useLocalStorage<T>(
+  key: string,
+  initialValue: T
+): [T, React.Dispatch<React.SetStateAction<T>>] {
   const [value, setValue] = useState(() =>
     JSON.parse(localStorage.getItem(key) || JSON.stringify(initialValue))
   )
