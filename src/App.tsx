@@ -52,7 +52,6 @@ function App() {
   const handleChangeSortBy = (newSortBy: SortBy) => {
     setSortBy(newSortBy)
     setCurrentPage(1)
-    console.log("hello")
   }
 
   return (
