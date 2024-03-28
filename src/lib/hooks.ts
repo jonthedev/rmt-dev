@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react"
 import { BASE_API_URL } from "./consts"
 import { JobItem, JobItemExpanded } from "./types"
-import { useQuery } from "@tanstack/react-query"
+import { useQueries, useQuery } from "@tanstack/react-query"
 import { handleError } from "./utils"
 import { BookmarksContext } from "../context/BookmarksContextProvider"
 
@@ -61,7 +61,7 @@ export function useJobItem(id: number | null) {
   return [data?.jobItem, isLoading] as const
 }
 
-export const useJobItems = (searchText: string) => {
+export const useSearchQuery = (searchText: string) => {
   const { data, isInitialLoading } = useQuery(
     ["job-items", searchText],
     () => (searchText ? fetchJobItems(searchText) : null),
@@ -73,10 +73,35 @@ export const useJobItems = (searchText: string) => {
       onError: handleError
     }
   )
-  const isLoading = isInitialLoading
-  return [data?.jobItems, isLoading] as const
+
+  return { jobItems: data?.jobItems, isLoading: isInitialLoading } as const
 }
 
+// --------------------------------------------------
+
+export const useJobItems = (ids: number[]) => {
+  const results = useQueries({
+    queries: ids.map(id => ({
+      queryKey: ["job-item", id],
+      queryFn: () => fetchJobItem(id),
+      staleTime: 1000 * 60 * 60,
+      refetchOnWindowFocus: false,
+      retry: false,
+      enabled: Boolean(id),
+      onError: handleError
+    }))
+  })
+
+  const jobItems = results
+    .map(result => result.data?.jobItem)
+    .filter(jobItem => jobItem !== undefined) as JobItemExpanded[]
+  //  .filter(jobItem => !!jobItem )
+  // .filter(jobItem => Boolean(jobItem)) as JobItemExpanded[]
+
+  const isLoading = results.some(result => result.isLoading)
+
+  return { jobItems, isLoading } as const
+}
 // --------------------------------------------------
 
 export function useActiveId() {
