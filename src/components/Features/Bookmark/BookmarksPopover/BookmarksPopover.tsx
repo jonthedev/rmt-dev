@@ -6,9 +6,7 @@ export default function BookmarksPopover() {
   const { bookmarkedJobItems, isLoading } = useBookmarksContext()
   return (
     <div className={styles["bookmarks-popover"]}>
-      {!isLoading && (
-        <JobList isLoading={false} jobItems={bookmarkedJobItems} />
-      )}
+      <JobList isLoading={isLoading} jobItems={bookmarkedJobItems} />
     </div>
   )
 }
