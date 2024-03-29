@@ -1,11 +1,11 @@
-import { useActiveId, useJobItem } from "../../../../lib/hooks"
+import { useActiveIdContext, useJobItem } from "../../../../lib/hooks"
 import Spinner from "../../../Spinner/Spinner"
 import BookmarkIcon from "../../Bookmark/BookmarkIcon/BookmarkIcon"
 import EmptyJobContent from "../EmptyJobConent/EmptyJobContent"
 import styles from "./JobItemContent.module.css"
 
 export default function JobItemContent() {
-  const activeId = useActiveId()
+  const { activeId } = useActiveIdContext()
 
   const [jobItem, isLoading] = useJobItem(activeId)
 
