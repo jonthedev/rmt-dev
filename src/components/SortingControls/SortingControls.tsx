@@ -1,15 +1,8 @@
-import { SortBy } from "../../lib/types"
+import { useJobItemsContext } from "../../lib/hooks"
 import styles from "./SortingControls.module.css"
 
-type SortingControlsProps = {
-  sortBy: SortBy
-  handleChangeSortBy: (newSortBy: SortBy) => void
-}
-
-export default function SortingControls({
-  sortBy,
-  handleChangeSortBy
-}: SortingControlsProps) {
+export default function SortingControls() {
+  const { handleChangeSortBy, sortBy } = useJobItemsContext()
   return (
     <section className={styles.sorting}>
       <i className="fa-solid fa-arrow-down-short-wide"></i>

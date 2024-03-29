@@ -1,14 +1,8 @@
+import { useSearchTextContext } from "../../lib/hooks"
 import styles from "./SearchForm.module.css"
 
-type SearchFormProps = {
-  searchText: string
-  setSearchText: (searchText: string) => void
-}
-
-export default function SearchForm({
-  searchText,
-  setSearchText
-}: SearchFormProps) {
+export default function SearchForm() {
+  const { searchText, handleChangeSearchText } = useSearchTextContext()
   return (
     <form
       action="#"
@@ -22,9 +16,7 @@ export default function SearchForm({
       </button>
 
       <input
-        onChange={e => {
-          setSearchText(e.target.value)
-        }}
+        onChange={e => handleChangeSearchText(e.target.value)}
         value={searchText}
         spellCheck="false"
         type="text"

@@ -1,12 +1,8 @@
+import { useJobItemsContext } from "../../lib/hooks"
 import styles from "./ResultsCount.module.css"
 
-type ResultsCountProps = {
-  totalNumberOfResults: number
-}
-
-export default function ResultsCount({
-  totalNumberOfResults
-}: ResultsCountProps) {
+export default function ResultsCount() {
+  const { totalNumberOfResults } = useJobItemsContext()
   return (
     <p className={styles.count}>
       <span className="u-bold">{totalNumberOfResults}</span> results

@@ -1,5 +1,5 @@
 import { useActiveIdContext } from "../../../../lib/hooks"
-import { type JobItem } from "../../../../lib/types"
+import { JobItem } from "../../../../lib/types"
 import Spinner from "../../../Spinner/Spinner"
 import JobListItem from "../JobListItem/JobListItem"
 import styles from "./JobList.module.css"
